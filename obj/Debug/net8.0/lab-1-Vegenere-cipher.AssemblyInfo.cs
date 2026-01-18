@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lab-1-Vegenere-cipher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6f5d1e66fa1db5822aa9b7a2d6d9412e635b562")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d7723c63f89c610b6239297a002f24b8d18253a")]
 [assembly: System.Reflection.AssemblyProductAttribute("lab-1-Vegenere-cipher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lab-1-Vegenere-cipher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
