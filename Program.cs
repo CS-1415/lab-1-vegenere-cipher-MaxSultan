@@ -13,7 +13,7 @@ static void TestIsLowercaseLetter()
     Debug.Assert(!IsLowercaseLetter('{'));
 }
 
-void TestIsValidInput() 
+static void TestIsValidInput() 
 {
     Debug.Assert(IsValidInput("thisisvalidinput"));
     Debug.Assert(!IsValidInput("ThisIsNotValid"));
@@ -21,7 +21,7 @@ void TestIsValidInput()
     Debug.Assert(!IsValidInput("this is not valid"));
 }
 
-void TestClamp()
+static void TestClamp()
 {
     Debug.Assert(Clamp(97, 122, 130) == 104);
     Debug.Assert(Clamp(97, 122, 97) == 97); 
@@ -29,7 +29,7 @@ void TestClamp()
     Debug.Assert(Clamp(97, 122, 123) == 97); 
 }
 
-void TestShiftLetter()
+static void TestShiftLetter()
 {
     Debug.Assert(ShiftLetter('a','a') == 'a');
     Debug.Assert(ShiftLetter('z','b') == 'a');
@@ -37,17 +37,24 @@ void TestShiftLetter()
     Debug.Assert(ShiftLetter('g','z') == 'f');
 }
 
+static void TestShiftMessage()
+{
+    Debug.Assert(ShiftMessage("endzz", "bc") == "fpeba");
+    Debug.Assert(ShiftMessage("endzz", "b") == "foeaa");
+}
+
+
 static bool IsLowercaseLetter(char c) 
 {
     return Convert.ToInt32(c) >= 97 && Convert.ToInt32(c) <= 122;
 }
 
-bool IsValidInput(string input)
+static bool IsValidInput(string input)
 {
     return input.ToCharArray().All(IsLowercaseLetter);
 }
 
-int Clamp(int min, int max, int number)
+static int Clamp(int min, int max, int number)
 {
     if (number > max)
         return Clamp(min, max, number - max - 1);
@@ -57,19 +64,31 @@ int Clamp(int min, int max, int number)
         return number;
 }
 
-char ShiftLetter(char c, char shift)
+static char ShiftLetter(char c, char shift)
 {
     int shiftFactor = Convert.ToInt32(shift) - 97;
     return (char)Clamp(97, 122, Convert.ToInt32(c) + shiftFactor);
+}
+
+static string ShiftMessage(string message, string key)
+{
+    int keyLength = key.Length;
+    string result = "";
+    for (int i = 0; i < message.Length; i++)
+    {
+        int keyIndex = i % keyLength;
+        result += ShiftLetter(message[i], key[keyIndex]);
+    }
+    return result;
 }
 
 TestIsLowercaseLetter();
 TestIsValidInput();
 TestClamp();
 TestShiftLetter();
+TestShiftMessage();
 
 void Main(){
-    
     Console.WriteLine("This program encrypts the characters of a message using the Vigenere method.");
     Console.WriteLine("Please enter the message:");
     string message = Console.ReadLine();
@@ -78,6 +97,11 @@ void Main(){
         Console.WriteLine("Sorry, we only support lower-case letters.");
         return;
     }
+    if (message == "")
+    {
+        Console.WriteLine("You must enter some characters");
+        return; 
+    }  
     Console.WriteLine("Please enter an encryption key:");
     string key = Console.ReadLine();
     if (!IsValidInput(key))
@@ -85,7 +109,12 @@ void Main(){
         Console.WriteLine("Sorry, we only support lower-case letters.");
         return;
     }
-    string encryptedMessage = message;
+    if (key == "")
+    {
+        Console.WriteLine("You must enter some characters");
+        return; 
+    }  
+    string encryptedMessage = ShiftMessage(message, key);
     Console.WriteLine("Here is the encrypted message: ");
     Console.WriteLine(encryptedMessage);
 }

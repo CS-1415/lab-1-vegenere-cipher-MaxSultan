@@ -12,3 +12,4 @@
 /Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-1-Vegenere-cipher/obj/Debug/net8.0/lab-1-Vegenere-cipher.pdb
 /Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-1-Vegenere-cipher/obj/Debug/net8.0/lab-1-Vegenere-cipher.genruntimeconfig.cache
 /Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-1-Vegenere-cipher/obj/Debug/net8.0/ref/lab-1-Vegenere-cipher.dll
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-1-Vegenere-cipher/obj/Debug/net8.0/lab-1-Vegenere-cipher.sourcelink.json
